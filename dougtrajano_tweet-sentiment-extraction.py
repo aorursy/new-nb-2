@@ -667,8 +667,6 @@ try:
 
     tpu_on = True
 
-    !pip install gcsfs
-
     print('Running on TPU ', tpu.master())
 
 except ValueError:
@@ -831,7 +829,7 @@ score = train_val["score"].mean()
 
 
 print("\n Score (training set): {}".format(score))
-train_val.groupby("sentiment").mean().plot(kind="bar", rot=1);
+train_val.groupby("sentiment").mean().plot(kind="bar", rot=1)
 
 
 
@@ -869,7 +867,7 @@ score = test_val["score"].mean()
 print("Score (testing set): {}".format(score))
 # Error analysis - Sentiment
 
-test_val.groupby("sentiment").mean().plot(kind="bar", rot=1);
+test_val.groupby("sentiment").mean().plot(kind="bar", rot=1)
 
 
 

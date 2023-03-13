@@ -262,7 +262,6 @@ if use_amp:
 
     except ImportError:
 
-        !pip install  -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ../input/*/*/NVIDIA-apex*
 
         from apex import amp
 device = 'cuda'

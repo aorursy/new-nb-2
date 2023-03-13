@@ -1291,9 +1291,3 @@ if ComputeLB:
     print("FID_public: ", fid_value_public, "distance_public: ", distance_public, "multiplied_public: ",
 
             fid_value_public /(distance_public + fid_epsilon))
-
-    
-
-    # REMOVE FILES TO PREVENT KERNEL ERROR OF TOO MANY FILES
-
-    ! rm -r ../tmp

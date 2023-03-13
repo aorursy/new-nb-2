@@ -47,7 +47,6 @@ df_train["Sex"].value_counts()
 df_train["Age"].value_counts().sort_index()
 df_train["Patient"].value_counts()
 df_train[df_train["Patient"] == "ID00229637202260254240583"]
-    !ls /kaggle/input/osic-pulmonary-fibrosis-progression/train/ID00229637202260254240583/
 import glob
 
 

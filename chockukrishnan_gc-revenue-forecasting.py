@@ -98,7 +98,6 @@ df_train.head()
 import gc
 del [[train,test]]
 gc.collect()
- %who
     # what variables exist in the program, to ensure it is deleted
 #what datatypes ?
 df_train.dtypes

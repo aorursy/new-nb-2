@@ -176,7 +176,7 @@ count_classes.plot(kind = 'bar', rot=0, figsize = (10,6))
 plt.title("Transaction Target distribution")
 plt.xticks(range(2), LABELS)
 plt.xlabel("Target")
-plt.ylabel("Frequency");
+plt.ylabel("Frequency")
 # tcred = time()
 # create 'TARGET' in test data and assgn value  '-1'
 test_df['TARGET'] = -1
@@ -189,7 +189,7 @@ del train_df, test_df
 gc.collect()
 
 # print( "Concat train + test :  {} secs" .format(time() - tcred))
-msno.bar(credit_df);
+msno.bar(credit_df)
 cred_col = ['AMT_ANNUITY', 'AMT_CREDIT', 'AMT_GOODS_PRICE', 'AMT_INCOME_TOTAL',
        #'AMT_REQ_CREDIT_BUREAU_DAY', 'AMT_REQ_CREDIT_BUREAU_HOUR', 'AMT_REQ_CREDIT_BUREAU_WEEK', 
        'AMT_REQ_CREDIT_BUREAU_MON', 'AMT_REQ_CREDIT_BUREAU_QRT',  'AMT_REQ_CREDIT_BUREAU_YEAR',
@@ -244,7 +244,7 @@ print ("Shape of Bureau data : ", bureau_data.shape)
 bureau_data = bureau_data.loc[(bureau_data['CREDIT_ACTIVE'] != 'Sold') & (bureau_data['CREDIT_ACTIVE'] != 'Bad debt') ]
 bureau_data = bureau_data.loc[(bureau_data['CREDIT_TYPE'] == 'Consumer credit') | (bureau_data['CREDIT_TYPE'] == 'Credit card') 
                              | (bureau_data['CREDIT_TYPE'] == 'Car loan') | (bureau_data['CREDIT_TYPE'] == 'Mortgage') ]
-msno.bar(bureau_data);
+msno.bar(bureau_data)
 bureau_data = bureau_data[ bureau_data['CREDIT_DAY_OVERDUE'] <=180]
 # bureau_data = data_preprocessing (bureau_data)
 
@@ -291,7 +291,7 @@ bureau_result = pd.merge(bureau_data,
                  bureau_balance_data[[ 'SK_ID_BUREAU', 'STATUS']],   #, 'STATUS'
                  on='SK_ID_BUREAU', 
                  how='left')
-msno.bar(bureau_result);
+msno.bar(bureau_result)
 # cat_data_distribution(bureau_result) 
 # bureau_result.columns[bureau_result.isna().any()].tolist()
 #bcol = bureau_result.columns.values
@@ -319,7 +319,7 @@ credit_df.shape
 previous_application_data = pd.read_csv(previous_application_file_path)
 print ("Shape of Previous Application data : ",previous_application_data.shape)
 # 
-msno.bar(previous_application_data);
+msno.bar(previous_application_data)
 previous_application_data[['SK_ID_PREV','SK_ID_CURR', 'NAME_CONTRACT_TYPE', 'AMT_ANNUITY',
        'AMT_APPLICATION', 'AMT_CREDIT',        'AMT_GOODS_PRICE', 
         'NAME_CONTRACT_STATUS', 'DAYS_DECISION',
@@ -340,7 +340,7 @@ prev_col = ['SK_ID_PREV', 'SK_ID_CURR', 'NAME_CONTRACT_TYPE', 'AMT_ANNUITY',
 previous_application_data = previous_application_data[prev_col] 
 pos_cash_balance_data = pd.read_csv(POS_CASH_balance_file_path)
 # pos_cash_balance_data.head()
-msno.bar(pos_cash_balance_data);
+msno.bar(pos_cash_balance_data)
 # cat_data_distribution(pos_cash_balance_data)
 # plot_pie_graph(pos_cash_balance_data, 'NAME_CONTRACT_STATUS')
 # Select records with 'Active', 'Completed' and 'Signed' status which are more than 10% of total transactions
@@ -369,7 +369,7 @@ gc.collect()
 # previous_result.head()
 credit_card_balance_data = pd.read_csv(credit_card_file_path)
 # credit_card_balance_data.head()
-msno.bar(credit_card_balance_data);
+msno.bar(credit_card_balance_data)
 # credit_card_balance_data.shape
 
 # cat_data_distribution(credit_card_balance_data)
@@ -399,17 +399,17 @@ previous_result = pd.merge(previous_result, credit_card_balance_data, on= ['SK_I
 del credit_card_balance_data
 gc.collect()
 print ("Shape of Installment Payment data : ",installments_payments_data.shape)
-msno.bar(installments_payments_data);
+msno.bar(installments_payments_data)
 #cat_data_distribution(installments_payments_data)
 plot_pie_graph(installments_payments_data, 'NUM_INSTALMENT_VERSION')
 #plot_bar_graph(installments_payments_data, 'NUM_INSTALMENT_VERSION', 'NUM_INSTALMENT_VERSION') 
 # Discard records with rare or less count of 'NUM_INSTALMENT_VERSION' compared to total transactions 
-                                                            | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 1.0)
-                                                            | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 2.0)
-                                                            | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 3.0)
+                                                            # | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 1.0)
+                                                            # | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 2.0)
+                                                            # | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 3.0)
                                                          #   | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 4.0)
                                                          #   | (installments_payments_data['NUM_INSTALMENT_VERSION'] == 5.0)
-                                              ]
+                                            #   ]
 # installments_payments_data.loc[(installments_payments_data['SK_ID_PREV'] == 1496271)]
 # msno.bar(installments_payments_data);
 
@@ -424,7 +424,7 @@ previous_result = pd.merge(previous_result,  installments_payments_data,  on= ['
 
 del installments_payments_data
 gc.collect()
-msno.bar(previous_result);
+msno.bar(previous_result)
 previous_result.columns.values
 select_col = ['SK_ID_PREV', 'SK_ID_CURR', 'NAME_CONTRACT_TYPE', 'AMT_ANNUITY',
        'AMT_APPLICATION', 'AMT_CREDIT', 'AMT_GOODS_PRICE',
@@ -457,7 +457,7 @@ credit_df = pd.merge(credit_df, previous_result, on='SK_ID_CURR', how='left')
 
 del previous_result
 gc.collect()
-msno.bar(credit_df);
+msno.bar(credit_df)
 cred_col = credit_df.columns.values
 credit_df =  credit_df[cred_col]
 credit_df.shape
@@ -504,7 +504,7 @@ xgr.fit(train_X, train_Y)
 
 # Feature Importance
 plt.figure(figsize=(20,15))
-xgb.plot_importance(xgr, max_num_features=50, height=0.8, ax=plt.gca());
+xgb.plot_importance(xgr, max_num_features=50, height=0.8, ax=plt.gca())
 print (" Total Feature impt time :  ({0:.3f} s)\n".format(time() - tt) )
 #
 importances_df = pd.DataFrame({'feature':train_X.columns,'importance':np.round(xgr.feature_importances_,3)})
@@ -594,7 +594,7 @@ def precision_recall_plot(pred_y, test_y):
 # PLOT HEATMAP OF CONFUSION MATRIX
 def conf_matrix():
     plt.figure(figsize=(8, 6))
-    sns.heatmap(conf_mat, xticklabels=LABELS, yticklabels=LABELS, annot=True, fmt="d");
+    sns.heatmap(conf_mat, xticklabels=LABELS, yticklabels=LABELS, annot=True, fmt="d")
     plt.title("Confusion matrix")
     plt.ylabel('True class')
     plt.xlabel('Predicted class')

@@ -45,9 +45,6 @@ print('Reading zip files in the dataset')
 zip_files = glob.glob('/kaggle/input/dogs-vs-cats/*.zip')
 
 
-
-
-
 print('{} files found in the input directory'.format(len(zip_files)))
 
 for file in zip_files:
@@ -207,11 +204,7 @@ print('what = cat, dog, or dogs and cats')
 
 def showImages(num_row,num_col,data, what ):
 
-    import matplotlib.pyplot as plt
-
-    %matplotlib inline
-
-    
+    import matplotlib.pyplot as plt    
 
     cat_df = data[data['Category'] == 'cat']
 

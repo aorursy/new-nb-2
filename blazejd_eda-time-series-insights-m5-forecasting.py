@@ -20,8 +20,6 @@ try:
 
 except:
 
-    ! pip install calmap
-
     import calmap
 
 
